@@ -12,16 +12,16 @@
 / {
 	pinctrl@10580000 {
 		usbpd_irq: usbpd-irq {
-			samsung,pins = "gpa1-7";
+			samsung,pins = "gpa3-5";
 			samsung,pin-function = <0xf>;
 			samsung,pin-pud = <3>;
 			samsung,pin-drv = <0>;
 		};
 	};
-	hsi2c@14E50000 {
-		status = "okay";
-		gpio_sda= <&gpe6 2 0x1>;
-		gpio_scl= <&gpe6 3 0x1>;
+	hsi2c@13660000 {
+			status = "okay";
+		gpio_sda= <&gpd3 0 0x1>;
+		gpio_scl= <&gpd3 1 0x1>;
         /*
 		samsung,hs-mode;
         */
@@ -30,8 +30,8 @@
 			reg = <0x3B>;
 			pinctrl-names = "default";
 			pinctrl-0 = <&usbpd_irq>;
-			interrupt-parent = <&gpa1>;
-			usbpd,usbpd_int = <&gpa1 7 0>;
+			interrupt-parent = <&gpa3>;
+			usbpd,usbpd_int = <&gpa3 5 0>;
 			usbpd,redriver_en = <&gpe4 2 0>;
 		};
 	};
