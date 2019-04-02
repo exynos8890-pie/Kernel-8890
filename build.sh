@@ -23,7 +23,6 @@ export CROSS_COMPILE=$BUILD_CROSS_COMPILE
 export BUILD_JOB_NUMBER=`grep processor /proc/cpuinfo|wc -l`
 
 export PLATFORM_VERSION=9.0.0
-export ANDROID_MAJOR_VERSION=p
 
 RDIR=$(pwd)
 OUTDIR=$RDIR/arch/$ARCH/boot
