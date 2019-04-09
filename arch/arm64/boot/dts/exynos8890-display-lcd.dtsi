@@ -99,7 +99,7 @@
 		resolution = <1440 2560>;
 		resolution_fhd = <1080 1920>;
 		resolution_hd = <720 1280>;
-		size = <63 112>;
+		size = <63 113>;
 		timing,refresh = <60>;
 		timing,h-porch = <2 2 2>;
 		timing,v-porch = <15 3 1>;

@@ -429,6 +429,7 @@
 		cl0_boot_max_qos = <1586000>;
 		cl0_boot_min_qos = <1586000>;
 		cl0_en_ema = <1>;
+		cl0_min_qos_freq = <858000>;
 
 		/* MNGS */
 		cl1_idx_num = <28>;
@@ -440,6 +441,8 @@
 		cl1_en_smpl = <1>;
 		cl1_jig_boot_max_qos = <1456000>;
 		cl1_reboot_limit_freq = <728000>;
+		cl1_min_qos_freq = <728000>;
+		cl1_boost_freq = <2288000>;
 
 		cl1_max_support_idx_table = < 7	   /* Number of online core is 0 */
 					      4    /* Number of online core is 1 */
