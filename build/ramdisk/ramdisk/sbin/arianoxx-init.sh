@@ -27,12 +27,34 @@ fi
 (
 	echo $(date) "arianoxx-Kernel LOG" >> $LOG
 	echo " " >> $LOG
+	
+	# Selinux permissive
+	echo "## -- Selinux permissive" >> $LOG;
+	echo "0" > /sys/fs/selinux/enforce ;
+	echo " " >> $LOG;
 
 	
-	# Stop services
-	su -c "stop secure_storage"
-	su -c "stop irisd"
+	# SafetyNet
+	echo "## -- SafetyNet permissions" >> $LOG;
+	chmod 640 /sys/fs/selinux/enforce;
+	chmod 440 /sys/fs/selinux/policy;
+	echo " " >> $LOG;
 
+
+	# deepsleep fix
+	echo "## -- DeepSleep Fix" >> $LOG;
+	if [ -f /data/adb/su/su.d/000000deepsleep ]; then
+		rm -f /data/adb/su/su.d/000000deepsleep;
+	fi
+	
+	for i in `ls /sys/class/scsi_disk/`; do
+		cat /sys/class/scsi_disk/$i/write_protect 2>/dev/null | grep 1 >/dev/null;
+		if [ $? -eq 0 ]; then
+			echo 'temporary none' > /sys/class/scsi_disk/$i/cache_type;
+		fi
+	done
+	echo " " >> $LOG;
+	
 	# Google play services wakelock fix
 	echo "## -- GooglePlay wakelock fix" >> $LOG
 	su -c "pm enable com.google.android.gms/.update.SystemUpdateActivity"
